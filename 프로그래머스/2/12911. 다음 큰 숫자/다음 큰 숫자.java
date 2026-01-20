@@ -1,19 +1,40 @@
 class Solution {
     public int solution(int n) {
-        // 1. 기준이 되는 n의 1의 개수를 계산합니다.
-        int targetCount = Integer.bitCount(n);
+        int smallCount = 0;
+    
+        String smallBinary = "";
+        int copyN = n;
         
-        // 2. n보다 1 큰 수부터 시작하여 무한 루프를 돕니다.
-        int nextNumber = n + 1;
-        
-        while (true) {
-            // 3. 다음 숫자의 1의 개수가 targetCount와 같은지 확인합니다.
-            if (Integer.bitCount(nextNumber) == targetCount) {
-                // 4. 조건을 만족하면 해당 숫자를 반환하고 종료합니다.
-                return nextNumber;
+        while(copyN > 0){
+            if (copyN % 2 == 1) {
+                smallCount++;
             }
-            // 5. 조건을 만족하지 않으면 숫자를 1 증가시킵니다.
-            nextNumber++;
+
+            copyN /= 2;
         }
+            
+
+        
+        while(true){
+            n++;
+            int cpyN = n;
+            int largeCount = 0;
+            String largeBinary = ""; 
+            while (cpyN > 0){
+                if (cpyN % 2 == 1) {
+                    largeCount++;
+                }
+
+                cpyN /= 2;
+                
+            }
+
+            
+            if(smallCount == largeCount){
+                break;
+            }
+        }
+        
+        return n;
     }
 }
